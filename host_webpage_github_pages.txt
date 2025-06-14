@@ -1,0 +1,40 @@
+
+How to Host a Webpage Using GitHub Pages (Step-by-Step Guide)
+-------------------------------------------------------------
+
+1. Upload Your Files to GitHub
+   ---------------------------
+   a. Create a repository on GitHub (e.g., named "Nevada").
+   b. On your computer, navigate to your project folder in the terminal.
+   c. Initialize Git (if you haven’t already):
+      git init
+   d. Add the remote:
+      git remote add origin https://github.com/YOUR_USERNAME/Nevada.git
+   e. Add and commit your files:
+      git add .
+      git commit -m "Initial commit"
+   f. Push to GitHub:
+      git push -u origin main
+      (Use 'master' instead of 'main' if that is your default branch)
+
+2. Enable GitHub Pages
+   --------------------
+   a. Go to your repository on GitHub.
+   b. Click on the "Settings" tab.
+   c. Scroll down and select "Pages" or "Pages and Wikis" from the left sidebar.
+   d. Under "Build and deployment", find the "Source" section.
+   e. Choose:
+      - Branch: main
+      - Folder: / (root)
+   f. Click "Save".
+
+3. Access Your Website
+   --------------------
+   a. GitHub will generate a public link like:
+      https://YOUR_USERNAME.github.io/Nevada/
+   b. Open this link in your browser to see your live site.
+
+4. Important Notes
+   ----------------
+   - Make sure your main HTML file is named: index.html
+   - Changes to your files may take a minute or two to appear online.
