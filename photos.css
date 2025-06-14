@@ -16,6 +16,7 @@ header {
   padding: 1rem;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  position: relative;
 }
 
 main {
@@ -58,34 +59,61 @@ button:hover {
   justify-content: center;
 }
 
-.text {
-  flex: 1 1 300px;
-  max-width: 500px;
+.photo-gallery {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 1rem;
+  padding: 1rem;
 }
 
-.text h3 {
-  font-size: 2.8rem;
-  font-family: 'Anton', sans-serif;
-  color: #1f1f1f;
-  text-shadow: 3px 3px 0 #fcd113, -3px -3px 0 #07510d;
-  margin-bottom: 1rem;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.photo {
+  flex: 0 0 auto;
+  width: 300px;
+  text-decoration: none;
+  scroll-snap-align: start;
+  position: relative;
+  display: block;
 }
 
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
-
-.image {
-  flex: 1 1 300px;
-  max-width: 500px;
-}
-
-.image img {
+.photo img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  display: block;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+  justify-items: center;
+}
+
+.photo:hover img {
+  opacity: 0.6;
+}
+
+.caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-family: monospace;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 5px;
+}
+
+.photo:hover .caption {
+  opacity: 1;
 }
 
 footer {
@@ -93,22 +121,6 @@ footer {
   color: white;
   text-align: center;
   padding: 1rem 0;
-}
-
-.photo-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -0.5rem;
-}
-
-.photo-gallery img {
-  width: calc(50% - 1rem);
-  margin: 0.5rem;
-  border-radius: 5px;
-  height: auto;
-  object-fit: cover;
-  box-sizing: border-box;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .home-button {
