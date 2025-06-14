@@ -1,0 +1,131 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f0e6;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #602323;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #deb887;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #5a5a5a;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #07510d;
+  color: white;
+  border: 1px solid black;
+  width: 100px;
+  padding: 0.5rem;
+  font-family: monospace;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #fcd113;
+  cursor: pointer;
+  color: black;
+}
+
+.content {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.text {
+  text-align: center;
+  margin: auto;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+.text h3 {
+  font-family: monospace;
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.text p {
+  font-family: monospace;
+  font-size: 1.25rem;
+  color: black;
+}
+
+.text, .image {
+  flex: 1;
+  max-width: 50%;
+}
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.image {
+  flex: 1 1 300px;
+  max-width: 500px;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+footer {
+  background-color: #5e3636;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.home-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #07510d;
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  border: 1px solid black;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.home-button:hover {
+  background-color: #fcd113;
+  color: black;
+}
