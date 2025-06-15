@@ -1,0 +1,228 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f0e6;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #602323;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #deb887;
+}
+
+nav {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: #5a5a5a;
+    margin-bottom: 1rem;
+}
+
+nav>a {
+    flex: 1;
+    /* make each link fill equal width */
+    display: block;
+}
+
+nav>a>button {
+    width: 100%;
+    /* button spans the full width of the link */
+    padding: 0.5rem;
+    font-family: monospace;
+    background-color: #07510d;
+    color: white;
+    border: 1px solid black;
+    transition: background-color 0.3s ease;
+}
+
+nav>a>button:hover {
+    background-color: #fcd113;
+    color: black;
+}
+
+button {
+    background-color: #07510d;
+    color: white;
+    border: 1px solid black;
+    padding: 0.5rem;
+    font-family: monospace;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #fcd113;
+    cursor: pointer;
+    color: black;
+}
+
+.content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.text {
+    text-align: center;
+    margin: auto;
+    padding: 2rem;
+    max-width: 800px;
+}
+
+.text h3 {
+    font-family: monospace;
+    font-size: 3rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.text p {
+    font-family: monospace;
+    font-size: 1.25rem;
+    color: black;
+}
+
+.text,
+.image {
+    flex: 1;
+    max-width: 50%;
+}
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.image {
+    flex: 1 1 300px;
+    max-width: 500px;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: #5e3636;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.home-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #07510d;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    border: 1px solid black;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.home-button:hover {
+    background-color: #fcd113;
+    color: black;
+}
+
+.accordion {
+    width: 100% !important;
+}
+
+.accordion-item {
+    width: 100% !important;
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #f5f0e6;
+  padding: 0 0.75rem;
+}
+
+.accordion-header {
+    width: 100% !important;
+    box-sizing: border-box;
+    display: block;
+    background: #07510d;
+    color: white;
+    padding: 0.75rem;
+    font-family: monospace;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.accordion-header:hover {
+    background: #fcd113;
+    color: black;
+}
+
+.food-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 1rem 0;
+}
+
+.food-item img {
+  flex: 0 0 150px;
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.food-description {
+  flex: 1;
+}
+
+.food-description h4 {
+  font-family: monospace;
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+}
+
+.food-description p {
+  font-family: monospace;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.food-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.food-item.reverse .food-description {
+  text-align: right; /* optional alignment tweak for reverse items */
+}

@@ -20,29 +20,28 @@
     <nav>
       <a href="photos.html"><button type="button">Photos</button></a>
       <a href="map.html"><button type="button">Map</button></a>
-      <button type="button">Food</button>
-      <button type="button">Setup</button>
-      <button type="button">Gallery</button>
+      <a href="food.html"><button type="button">Food</button></a>
+      <a href="setup.html"><button type="button">Setup</button></a>
+      <a href="gallery.html"><button type="button">Gallery</button></a>
     </nav>
 
     <div class="content">
       <div class="text">
         <h1>Routes Traveled</h1>
-        <select id="routeSelect">
+        <select title="routes" id="routeSelect">
           <option value="nevada.geojson">Las Vegas to Great Basin</option>
           <option value="osceloa.geojson">Osceloa Ditch Trail</option>
-          <option value="lehman-creek.geojson">Lehman Creek</option>
+          <option value="lehman-creek.geojson">Upper Lehman Creek Campground</option>
           <option value="strawberry1.geojson">Strawberry Creek 1st Half</option>
           <option value="strawberry2.geojson">Strawberry Creek 2nd Half</option>
         </select>
-        <p>Select the route to see where JP and JE went!
-        </p>
+        <p>Select the route to see where JP and JE went during their trip to The Great Basin National Park!</p>
         <div id="routeInfo">
           <p><strong>Distance:</strong> <span id="routeDistance"></span> km</p>
-          <p><strong>~ Duration:</strong> <span id="routeDuration"></span> hrs</p>
+          <p><strong>Duration:</strong> <span id="routeDuration"></span></p>
         </div>
       </div>
-      <div id="map" style="width:100%; height:500px;"></div>
+      <div id="map"></div>
     </div>
     </div>
   </main>
@@ -50,83 +49,83 @@
   <footer>
     <p>Juan Montano</p>
   </footer>
-<script>
-  // Initialize Leaflet map
-  const map = L.map('map').setView([0, 0], 13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
+  <script>
+    // Initialize Leaflet map
+    const map = L.map('map').setView([0, 0], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
-  let currentLayer = null;
+    let currentLayer = null;
 
-  function getColorByFilename(file) {
-    switch (file) {
-      case 'nevada.geojson': return 'red';
-      case 'osceloa.geojson': return 'blue';
-      case 'lehman-creek.geojson': return 'green';
-      case 'strawberry1.geojson': return 'purple';
-      case 'strawberry2.geojson': return 'orange';
-      default: return 'black';
-    }
-  }
-
-  function getSpeedByFilename(file) {
-    // speeds in km/h
-    switch (file) {
-      case 'nevada.geojson':
-        return 125; // driving speed ~60 km/h
-      default:
-        return 3;  // walking speed ~4 km/h
-    }
-  }
-
-  function updateRouteInfo(layer, file) {
-    const coords = [];
-    layer.eachLayer(feature => {
-      if (feature instanceof L.Polyline) {
-        coords.push(...feature.getLatLngs());
+    function getColorByFilename(file) {
+      switch (file) {
+        case 'nevada.geojson': return 'red';
+        case 'osceloa.geojson': return 'blue';
+        case 'lehman-creek.geojson': return 'green';
+        case 'strawberry1.geojson': return 'purple';
+        case 'strawberry2.geojson': return 'orange';
+        default: return 'black';
       }
-    });
-
-    let totalMeters = 0;
-    for (let i = 1; i < coords.length; i++) {
-      totalMeters += coords[i - 1].distanceTo(coords[i]);
     }
-    const totalKm = totalMeters / 1000;
 
-    const speedKph = getSpeedByFilename(file);
-    const estHours = totalKm / speedKph;
-    const estTime = speedKph > 10
-      ? `${estHours.toFixed(1)} h`
-      : `${Math.floor(estHours)} h ${Math.round((estHours % 1) * 60)} min`;
+    function getSpeedByFilename(file) {
+      // speeds in km/h
+      switch (file) {
+        case 'nevada.geojson':
+          return 125; // driving speed ~60 km/h
+        default:
+          return 3;  // walking speed ~4 km/h
+      }
+    }
 
-    document.getElementById('routeDistance').textContent = totalKm.toFixed(1);
-    document.getElementById('routeDuration').textContent = estTime;
-  }
-
-  function loadRoute(file) {
-    fetch(file)
-      .then(res => res.json())
-      .then(data => {
-        if (currentLayer) {
-          map.removeLayer(currentLayer);
+    function updateRouteInfo(layer, file) {
+      const coords = [];
+      layer.eachLayer(feature => {
+        if (feature instanceof L.Polyline) {
+          coords.push(...feature.getLatLngs());
         }
-        currentLayer = L.geoJSON(data, {
-          style: { color: getColorByFilename(file), weight: 4 }
-        }).addTo(map);
-        map.fitBounds(currentLayer.getBounds());
-        updateRouteInfo(currentLayer, file);
-      })
-      .catch(err => console.error('Failed to load GeoJSON:', err));
-  }
+      });
 
-  const selectEl = document.getElementById('routeSelect');
-  loadRoute(selectEl.value);
+      let totalMeters = 0;
+      for (let i = 1; i < coords.length; i++) {
+        totalMeters += coords[i - 1].distanceTo(coords[i]);
+      }
+      const totalKm = totalMeters / 1000;
 
-  selectEl.addEventListener('change', function () {
-    loadRoute(this.value);
-  });
-</script>
+      const speedKph = getSpeedByFilename(file);
+      const estHours = totalKm / speedKph;
+      const estTime = speedKph > 10
+        ? `${estHours.toFixed(1)} hrs`
+        : `${Math.floor(estHours)} hrs ${Math.round((estHours % 1) * 60)} min`;
+
+      document.getElementById('routeDistance').textContent = totalKm.toFixed(1);
+      document.getElementById('routeDuration').textContent = estTime;
+    }
+
+    function loadRoute(file) {
+      fetch(file)
+        .then(res => res.json())
+        .then(data => {
+          if (currentLayer) {
+            map.removeLayer(currentLayer);
+          }
+          currentLayer = L.geoJSON(data, {
+            style: { color: getColorByFilename(file), weight: 4 }
+          }).addTo(map);
+          map.fitBounds(currentLayer.getBounds());
+          updateRouteInfo(currentLayer, file);
+        })
+        .catch(err => console.error('Failed to load GeoJSON:', err));
+    }
+
+    const selectEl = document.getElementById('routeSelect');
+    loadRoute(selectEl.value);
+
+    selectEl.addEventListener('change', function () {
+      loadRoute(this.value);
+    });
+  </script>
 </body>
 
 </html>

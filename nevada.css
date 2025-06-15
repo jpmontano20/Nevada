@@ -28,17 +28,36 @@ main {
 
 nav {
   display: flex;
-  justify-content: space-evenly;
+  gap: 0.5rem;
+  padding: 0.5rem;
   background-color: #5a5a5a;
-  padding: 0.5rem 0;
   margin-bottom: 1rem;
+}
+
+nav > a {
+  flex: 1;              /* make each link fill equal width */
+  display: block;
+}
+
+nav > a > button {
+  width: 100%;          /* button spans the full width of the link */
+  padding: 0.5rem;
+  font-family: monospace;
+  background-color: #07510d;
+  color: white;
+  border: 1px solid black;
+  transition: background-color 0.3s ease;
+}
+
+nav > a > button:hover {
+  background-color: #fcd113;
+  color: black;
 }
 
 button {
   background-color: #07510d;
   color: white;
   border: 1px solid black;
-  width: 100px;
   padding: 0.5rem;
   font-family: monospace;
   transition: background-color 0.3s ease;
@@ -128,4 +147,45 @@ footer {
 .home-button:hover {
   background-color: #fcd113;
   color: black;
+}
+
+#setupVideo {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid black;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  border-radius: 6px;
+}
+
+.video-wrapper {
+  display: flex;
+  flex-wrap: wrap;/* ⚠ Center items horizontally */
+  align-items: center;    /* ⚠ Center items vertically */
+  gap: 5rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.video-description {
+  flex: 1 1 250px;
+  font-family: monospace;
+}
+
+.video-description h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.video-description p {
+  line-height: 1.4;
+}
+
+#setupVideo {
+  flex: 0 0 300px;
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
