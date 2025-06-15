@@ -71,11 +71,14 @@ button:hover {
 
 .photo {
   flex: 0 0 auto;
-  width: 300px;
+  width: 300px;          /* or your desired box height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* horizontal centering */
+  justify-content: center; /* vertical centering */
   text-decoration: none;
   scroll-snap-align: start;
   position: relative;
-  display: block;
 }
 
 .photo img {
@@ -88,7 +91,7 @@ button:hover {
   justify-items: center;
 }
 
-.photo:hover img {
+.photo img:hover {
   opacity: 0.6;
 }
 
